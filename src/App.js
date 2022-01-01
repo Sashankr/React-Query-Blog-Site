@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import './App.css'
 import { useQuery } from 'react-query'
 import Post from './Post';
+import client from './react-query-client';
 
 const url = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -21,15 +22,21 @@ function App() {
         return <Post postID = {postID} goBack={() => setPostID(null)} />
     }
 
+
 	return (
 		<div className="App">
 			<h2>Blog posts</h2>
             <div className="posts">
                 {posts?.map((post)=>{
+                const cachedPost = client.getQueryData(['individualPost',post.id]);
                 return (
-                    <p key={post.id}>
+                    <div key={post.id}>
+                    
+                    <p>
+                    <strong>{cachedPost?'(visited)':''}</strong>
                        {post.id} <a onClick={()=>{setPostID(post.id)}} href="#">{post.title}</a>
                     </p>
+                    </div>
                 )
             })}
             </div>

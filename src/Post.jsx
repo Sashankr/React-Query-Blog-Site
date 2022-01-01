@@ -15,7 +15,7 @@ const Post = ({postID,goBack}) => {
     }
 
     return (
-        <div class="individual-post">
+        <div className="individual-post">
             <a href="#" onClick={goBack}>Go Back</a>
             <p><small>{data.id}</small></p>
             <h2>{data.title} </h2>
