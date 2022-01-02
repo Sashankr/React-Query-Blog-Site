@@ -14,7 +14,9 @@ const fetcher = () =>{
 function App() {
 	// let's go
     const [postID,setPostID] = useState(null);
-    const {data : posts,isLoading} = useQuery(['posts'],()=>fetcher())
+    const {data : posts,isLoading} = useQuery(['posts'],()=>fetcher(),{
+        select : result => result.slice(0,5)
+    })
 
     {isLoading && <h2>Loading...</h2>}
 
