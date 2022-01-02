@@ -9,7 +9,7 @@ const url = 'https://jsonplaceholder.typicode.com/posts';
 const fetcher = () =>{
     return fetch(url).then(data => data.json())
 }
-
+//trying ssh
 
 function App() {
 	// let's go
@@ -17,6 +17,7 @@ function App() {
     const {data : posts,isLoading} = useQuery(['posts'],()=>fetcher(),{
         select : result => result.slice(0,5)
     })
+
 
     {isLoading && <h2>Loading...</h2>}
 
